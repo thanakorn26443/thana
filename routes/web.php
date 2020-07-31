@@ -76,3 +76,29 @@ Route::get("/myprofile/create","MyProfileController@create");
 Route::get("/myprofile/{id}/edit", "MyProfileController@edit");
 Route::get("/myprofile/{id}", "MyProfileController@show");
 
+Route::get( "/newgallery" , "MyProfileController@gallery" );
+Route::get( "/newgallery/ant" , "MyProfileController@ant" );
+Route::get( "/newgallery/bird" , "MyProfileController@bird" );
+Route::get( "/coronavirus" , "MyProfileController@coronavirus" );
+
+// Bootstrap
+Route::get("/teacher" , function (){
+	return view("teacher/index");
+});
+
+Route::get("/student" , function (){
+	return view("student/index");
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// web free laravel
+Route::get('/table', function () {
+    return view('table');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});

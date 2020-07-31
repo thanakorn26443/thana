@@ -2,10 +2,10 @@
 <html>
 <body>
 <h1>Hello, ธนากร ชุลี</h1>
-<a href = "{{ url('gallery/ant') }}">
+<a href = "{{ url('newgallery/ant') }}">
     <img src = "{{$ant}}" height = "150">
 </a>
-<a href = "{{ url('gallery/bird') }}">
+<a href = "{{ url('newgallery/bird') }}">
     <img src = "{{$bird}}" height = "150">
 </a>
 <a href = "{{ url('gallery/cat') }}">
