@@ -102,3 +102,5 @@ Route::get('/table', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/covid19', 'Covid19Controller@index');
