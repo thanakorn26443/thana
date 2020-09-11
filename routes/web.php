@@ -102,5 +102,20 @@ Route::get('/table', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
-
+/*
+Route::get("/covid19/create", "Covid19Controller@create");
+Route::get("/covid19/{id}/edit", "Covid19Controller@edit");
 Route::get('/covid19', 'Covid19Controller@index');
+Route::get('/covid19/{id}', 'Covid19Controller@show');
+
+Route::post("/covid19", "Covid19Controller@store");
+Route::patch("/covid19/{id}", "Covid19Controller@update");
+Route::delete('/covid19/{id}', 'Covid19Controller@destroy');
+*/
+Route::resource('/covid19','Covid19Controller');
+Route::resource('/staff','StaffController');
+
+Route::resource('post', 'PostController');
+Route::resource('post', 'PostController');
+Route::resource('book', 'BookController');
+Route::resource('street', 'StreetController');

@@ -2,7 +2,8 @@
     "fields": [
         {
             "name": "title",
-            "type": "string"
+            "type": "string",
+            
         },
         {
             "name": "content",
@@ -22,5 +23,4 @@
             "type": "integer#unsigned"
         }
     ]
- }
- 
+}
