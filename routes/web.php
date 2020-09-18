@@ -82,9 +82,10 @@ Route::get( "/newgallery/bird" , "MyProfileController@bird" );
 Route::get( "/coronavirus" , "MyProfileController@coronavirus" );
 
 // Bootstrap
+
 Route::get("/teacher" , function (){
 	return view("teacher/index");
-});
+})->middleware('auth', 'role:admin');
 
 Route::get("/student" , function (){
 	return view("student/index");
@@ -112,7 +113,17 @@ Route::post("/covid19", "Covid19Controller@store");
 Route::patch("/covid19/{id}", "Covid19Controller@update");
 Route::delete('/covid19/{id}', 'Covid19Controller@destroy');
 */
-Route::resource('/covid19','Covid19Controller');
+//READ
+Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
+    Route::resource('covid19', 'Covid19Controller')->only(['index', 'show' ]);
+    
+});
+//WRITE
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('covid19', 'Covid19Controller')->except(['index', 'show' ]);
+    });
+    
+
 Route::resource('/staff','StaffController');
 
 Route::resource('post', 'PostController');
