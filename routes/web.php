@@ -130,3 +130,8 @@ Route::resource('post', 'PostController');
 Route::resource('post', 'PostController');
 Route::resource('book', 'BookController');
 Route::resource('street', 'StreetController');
+Route::resource('book', 'BookController');
+Route::resource('book', 'BookController');
+Route::resource('profile', 'ProfileController');
+Route::resource('vehicles', 'VehiclesController');
+Route::resource('users', 'UsersController');

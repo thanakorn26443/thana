@@ -29,18 +29,15 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
-                                    <tr class="text-center">
-                                        <th>#</th>
-                                         <th>Title</th>
-                                         <th class="d-none">Content</th><th>Year</th><th>Price</th><th>Isbn</th><th>Author Id</th><th>Publisher Id</th><th>Photo</th><th>Actions</th>
+                                    <tr>
+                                        <th>#</th><th>Title</th><th>Content</th><th>Year</th><th>Price</th><th>Isbn</th><th>Author Id</th><th>Publisher Id</th><th>Photo</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($book as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td><td class="d-none">{{ $item->content }}</td><td>{{ $item->year }}</td><td>{{ $item->price }}</td><td>{{ $item->isbn }}</td><td>{{ $item->author_id }}</td><td>{{ $item->publisher_id }}</td>
-                                        <td><img src="{{ asset("/storage/{$item->photo} ") }}"width=150></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->title }}</td><td>{{ $item->content }}</td><td>{{ $item->year }}</td><td>{{ $item->price }}</td><td>{{ $item->isbn }}</td><td>{{ $item->author_id }}</td><td>{{ $item->publisher_id }}</td><td>{{ $item->photo }}</td>
                                         <td>
                                             <a href="{{ url('/book/' . $item->id) }}" title="View Book"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/book/' . $item->id . '/edit') }}" title="Edit Book"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
