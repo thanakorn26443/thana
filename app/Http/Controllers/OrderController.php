@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\OrderProduct;
 use App\Product;
 
@@ -89,7 +90,7 @@ class OrderController extends Controller
             Product::where('id',$item->product_id)->decrement('quantity', $item->quantity);
         }
 
-        Order::create($requestData);
+        
 
         return redirect('order')->with('flash_message', 'Order added!');
     }
@@ -136,6 +137,23 @@ class OrderController extends Controller
         $requestData = $request->all();
         
         $order = Order::findOrFail($id);
+        switch($requestData['status']){
+            case "paid" : 
+                $requestData['paid_at'] = date("Y-m-d H:i:s");
+                break;
+            case "completed" : 
+                $requestData['completed_at'] = date("Y-m-d H:i:s");
+                break;
+            case "cancelled" :
+                $requestData['cancelled_at'] = date("Y-m-d H:i:s");
+                $order_products = $order->order_products;
+                foreach($order_products as $item)
+                    {
+                        Product::where('id',$item->product_id)->increment('quantity', $item->quantity);
+                    }
+                break;
+        }
+
         $order->update($requestData);
 
         return redirect('order')->with('flash_message', 'Order updated!');
@@ -154,4 +172,8 @@ class OrderController extends Controller
 
         return redirect('order')->with('flash_message', 'Order deleted!');
     }
+    
+
+
+
 }
